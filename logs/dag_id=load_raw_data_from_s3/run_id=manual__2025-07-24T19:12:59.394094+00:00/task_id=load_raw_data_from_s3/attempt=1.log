@@ -1,0 +1,11 @@
+{"timestamp":"2025-07-24T19:13:00.515378","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-24T19:13:00.515789","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-24T19:13:00.848866","level":"info","event":"Found credentials in environment variables.","logger":"botocore.credentials"}
+{"timestamp":"2025-07-24T19:13:00.902583Z","level":"info","event":"Reading file s3://airflow-retail-stage/Day_Wise/2019-10-24/event.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T19:13:02.180241Z","level":"info","event":"Total data count: 15530","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T19:13:02.181166","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-07-24T19:13:02.187734","level":"info","event":"Connection Retrieved 'postgres'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-07-24T19:13:02.196727Z","level":"info","event":"Exception occured (psycopg2.OperationalError) connection to server at \"postgres\" (172.18.0.3), port 5432 failed: FATAL:  database \"None\" does not exist","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T19:13:02.200396Z","level":"info","event":"","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T19:13:02.200769Z","level":"info","event":"(Background on this error at: https://sqlalche.me/e/14/e3q8)","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T19:13:02.197020","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.sdk.definitions.asset.decorators._AssetMainOperator"}

@@ -1,0 +1,9 @@
+{"timestamp":"2025-07-21T18:27:38.691172","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-21T18:27:38.691439","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/user.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T18:27:38.711156","level":"info","event":"Executing: \n        INSERT INTO users (id, firstname, lastname, email, created_at)\n        VALUES (1223, 'Arpan processed', 'Das', 'arpan.das@gmail.com', '2025-07-21 10:00:00')\n        ","logger":"airflow.task.operators.airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator"}
+{"timestamp":"2025-07-21T18:27:38.711783","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-07-21T18:27:38.720853","level":"info","event":"Connection Retrieved 'postgres'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-07-21T18:27:38.721610","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-07-21T18:27:38.723571","level":"info","event":"Connection Retrieved 'postgres'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-07-21T18:27:38.724916","level":"info","event":"Running statement: \n        INSERT INTO users (id, firstname, lastname, email, created_at)\n        VALUES (1223, 'Arpan processed', 'Das', 'arpan.das@gmail.com', '2025-07-21 10:00:00')\n        , parameters: None","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook"}
+{"timestamp":"2025-07-21T18:27:38.725461","level":"info","event":"Rows affected: 1","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook"}

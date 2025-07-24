@@ -1,0 +1,10 @@
+{"timestamp":"2025-07-21T18:35:36.357867","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-21T18:35:36.358130","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/user.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T18:35:36.370276","level":"info","event":"Executing: \n        SELECT * FROM users\n        ","logger":"airflow.task.operators.airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator"}
+{"timestamp":"2025-07-21T18:35:36.370928","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-07-21T18:35:36.377423","level":"info","event":"Connection Retrieved 'postgres'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-07-21T18:35:36.378175","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-07-21T18:35:36.380039","level":"info","event":"Connection Retrieved 'postgres'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-07-21T18:35:36.381337","level":"info","event":"Running statement: \n        SELECT * FROM users\n        , parameters: None","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook"}
+{"timestamp":"2025-07-21T18:35:36.381744","level":"info","event":"Rows affected: 2","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook"}
+{"timestamp":"2025-07-21T18:35:36.381883","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('01982e45-04b6-710c-ac5a-2d17cc41e1e9'), task_id='select_user', dag_id='user_processing', run_id='manual__2025-07-21T18:35:31.874773+00:00', try_number=1, map_index=-1, hostname='1dc4bd06cf35', context_carrier=None, task=<Task(SQLExecuteQueryOperator): select_user>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=0, start_date=datetime.datetime(2025, 7, 21, 18, 35, 36, 329699, tzinfo=TzInfo(UTC)), end_date=None, is_mapped=False)","logger":"task"}

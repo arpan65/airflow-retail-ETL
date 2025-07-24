@@ -1,0 +1,5 @@
+{"timestamp":"2025-07-24T18:17:52.394752","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-24T18:17:52.395173","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-24T18:17:52.828648","level":"info","event":"Found credentials in environment variables.","logger":"botocore.credentials"}
+{"timestamp":"2025-07-24T18:17:52.888971Z","level":"info","event":"Exception occured name 'BUCKET_NAME' is not defined","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T18:17:52.889257","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.sdk.definitions.asset.decorators._AssetMainOperator"}

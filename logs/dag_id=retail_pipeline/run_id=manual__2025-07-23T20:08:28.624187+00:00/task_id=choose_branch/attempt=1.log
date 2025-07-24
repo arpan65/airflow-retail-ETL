@@ -1,0 +1,7 @@
+{"timestamp":"2025-07-23T20:08:31.505126","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-23T20:08:31.505367","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-23T20:08:31.721839","level":"info","event":"Done. Returned value was: task_failed_notification","logger":"airflow.task.operators.airflow.providers.standard.decorators.branch_python._BranchPythonDecoratedOperator"}
+{"timestamp":"2025-07-23T20:08:31.721890","level":"info","event":"Branch into task_failed_notification","logger":"airflow.task.operators.airflow.providers.standard.decorators.branch_python._BranchPythonDecoratedOperator"}
+{"timestamp":"2025-07-23T20:08:31.722000","level":"info","event":"Following branch {'task_failed_notification'}","logger":"airflow.task.operators.airflow.providers.standard.decorators.branch_python._BranchPythonDecoratedOperator"}
+{"timestamp":"2025-07-23T20:08:31.722222","level":"info","event":"Skipping tasks [('task_complete_notification', -1)]","logger":"airflow.task.operators.airflow.providers.standard.decorators.branch_python._BranchPythonDecoratedOperator"}
+{"timestamp":"2025-07-23T20:08:31.722287","level":"info","event":"Skipping downstream tasks.","logger":"task"}

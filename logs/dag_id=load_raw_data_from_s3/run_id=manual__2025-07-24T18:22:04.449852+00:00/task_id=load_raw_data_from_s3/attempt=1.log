@@ -1,0 +1,6 @@
+{"timestamp":"2025-07-24T18:22:04.775070","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-07-24T18:22:04.775555","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-24T18:22:05.111044","level":"info","event":"Found credentials in environment variables.","logger":"botocore.credentials"}
+{"timestamp":"2025-07-24T18:22:05.158587Z","level":"info","event":"Reading file s3://airflow-retail-stage/Day_Wise/2019-10-24/event.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T18:22:06.664635Z","level":"info","event":"Total data count: 15530","chan":"stdout","logger":"task"}
+{"timestamp":"2025-07-24T18:22:06.666648","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.sdk.definitions.asset.decorators._AssetMainOperator"}
