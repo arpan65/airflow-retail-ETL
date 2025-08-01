@@ -1,116 +1,129 @@
+# 🛍️ Retail E-commerce Analytics Pipeline  
+**Apache Airflow 3.0 + PostgreSQL + AWS (S3, Glue)**
 
-
-# 🛍️ Retail E-commerce Analytics Pipeline with Apache Airflow, AWS, and PostgreSQL
-
-This project builds an end-to-end data pipeline to process and analyze e-commerce event data. It uses **Apache Airflow 3.0** (asset-based DAGs), **PostgreSQL**, **AWS S3**, and **Glue Crawlers** to orchestrate ingestion, transformation, aggregation, and catalog updates for downstream analytics.
+This project builds a robust end-to-end data pipeline for processing and analyzing e-commerce events. Built using modern Data Engineering best practices with Airflow assets, incremental processing, PostgreSQL, and AWS integration.
 
 ---
 
 ## 📁 Folder Structure
 
 ```
+
 .
-├── aws_resources/          # AWS-related setup/configs (e.g., credentials, S3, Crawlers)
-├── config/                 # Optional: Airflow or pipeline configurations
+├── aws\_resources/          # CDK-generated AWS infrastructure (S3, Glue Crawler)
 ├── dags/
-│   ├── retail_pipeline_assets.py   # Asset-based DAG for raw to mart processing
-│   └── retail_pipeline.py          # Traditional DAG for mart aggregation and Glue catalog update
-├── data/                   # (Optional) Raw CSVs or staging data
-├── logs/                   # Airflow logs
-├── plugins/                # Custom Airflow plugins
+│   ├── retail\_pipeline\_assets.py   # Airflow DAG for staging → fact/dim
+│   └── retail\_pipeline.py          # Airflow DAG for aggregates + Glue Crawler
 ├── scripts/
-│   └── table_creation.sql  # SQL scripts to create staging, fact, and dimension tables
-├── docker-compose.yaml     # Local Airflow deployment with Docker
-└── .venv/                  # Python virtual environment
-```
+│   └── table\_creation.sql  # PostgreSQL DDL for staging + mart schema
+├── architecture/
+│   └── Airflow-Retail-ETL.drawio.png  # Architecture diagram
+├── docker-compose.yaml     # Local Airflow deployment
+└── .venv/                  # Python virtual environment (excluded from git)
 
----
-
-## 📌 Pipeline Overview
-
-### 1. **Staging and Modeling (`retail_pipeline_assets.py`)**
-
-* Ingests raw e-commerce events (CSV) from S3 (partitioned by day).
-* Loads data into:
-
-  * `staging_events` (raw)
-  * `dim_product`, `dim_user`, etc. (dimensions)
-  * `fact_events` (fact table with enriched events)
-* Supports incremental loads.
-
-### 2. **Aggregations and Mart (`retail_pipeline.py`)**
-
-* Computes daily KPIs: revenue, funnel conversion rates, top categories.
-* Writes daily aggregates as **Parquet** to `s3://airflow-retail-mart/`.
-* Triggers a **Glue Crawler** to update the AWS Glue Data Catalog for Athena/Redshift Spectrum querying.
+````
 
 ---
 
 ## ⚙️ Tech Stack
 
 | Component              | Purpose                                     |
-| ---------------------- | ------------------------------------------- |
-| **Apache Airflow 3.0** | Orchestration using tasks/assets/DAGs       |
-| **PostgreSQL**         | Data warehouse for staging, fact/dim models |
-| **AWS S3**             | Source and sink for CSVs and Parquet data   |
-| **Glue Crawler**       | Catalogs Parquet data for Athena access     |
-| **DuckDB/Pandas**      | Optional: Lightweight in-memory transforms  |
-| **Docker Compose**     | Local Airflow setup with PostgreSQL         |
+|------------------------|---------------------------------------------|
+| Apache Airflow 3.0     | Orchestration using asset-based DAGs       |
+| PostgreSQL             | Staging and dimensional modeling            |
+| AWS S3                 | Raw and aggregated data storage             |
+| AWS Glue Crawler       | Schema registry for Parquet marts           |
+| Docker Compose         | Local Airflow setup                         |
+| DuckDB + Pandas        | Optional in-memory data transformations     |
 
 ---
 
-## 🚀 Quick Start (Local Deployment)
+## 📌 Pipeline Overview
 
-1. **Clone the repo**:
+### 🔹 DAG 1: `retail_pipeline_assets.py`
 
-   ```bash
-   git clone https://github.com/yourusername/retail-pipeline.git
-   cd retail-pipeline
-   ```
+- Reads daily raw event CSVs from `s3://airflow-retail-stage/`
+- Loads into:
+  - `staging_events`
+  - Dimension tables: `dim_product`, `dim_user`, etc.
+  - Fact table: `fact_events`
+- All loads are incremental using execution date.
 
-2. **Start Airflow with Docker Compose**:
+### 🔹 DAG 2: `retail_pipeline.py`
 
-   ```bash
-   docker-compose up --build
-   ```
-
-3. **Access Airflow UI**:
-   [http://localhost:8080](http://localhost:8080)
-
-4. **Load tables**:
-   Use the SQL in `scripts/table_creation.sql` to initialize your database.
-
----
-
-## 📊 Key Metrics Tracked
-
-* Total daily revenue
-* Daily active users
-* Views → Carts → Purchases funnel (conversion rates)
-* Top categories/brands by revenue
+- Computes daily KPIs:
+  - Total revenue
+  - Active users
+  - Funnel conversion
+- Stores aggregates in Parquet under `s3://airflow-retail-mart/aggregates/...`
+- Triggers Glue Crawler to update the AWS Glue Data Catalog
 
 ---
 
-## 🔐 AWS Setup Tips
+## 🖼️ Architecture Diagram
 
-* S3 buckets required:
-
-  * `airflow-retail-stage` (raw CSVs in `month/YYYY-MM-DD/event.csv`)
-  * `airflow-retail-mart` (aggregates in `aggregates/<metric>/dt=YYYY-MM-DD/`)
-* Glue Crawler: `retail-parquet-crawler` should be pre-configured.
-* Use an Airflow AWS connection named `aws`.
+![Retail Pipeline Architecture](architecture/Airflow-Retail-ETL.drawio.png)
 
 ---
 
-## ✅ To-Do / Enhancements
+## 📊 Key Business Metrics
 
-* Add unit tests for transformations
-* Automate schema evolution with Glue
-* Connect to AWS Athena for querying marts
-* Add data quality checks with Airflow Sensors or Great Expectations
+- 🛒 Total daily revenue
+- 👤 Daily active users
+- 🔄 Funnel: Views → Carts → Purchases
+- 🏆 Top brands and categories
 
 ---
 
-## 📄 License
+## 🚀 Quick Start (Local)
 
-MIT License. Free to use for learning and portfolio purposes.
+```bash
+# 1. Clone repo
+git clone https://github.com/yourusername/retail-pipeline.git
+cd retail-pipeline
+
+# 2. Start Airflow locally
+docker-compose up --build
+
+# 3. Open Airflow UI
+# http://localhost:8080
+
+# 4. Create tables (in PostgreSQL)
+psql -h localhost -U airflow -d airflow -f scripts/table_creation.sql
+````
+
+---
+
+## 📦 S3 Structure
+
+* **Raw data**
+  `s3://airflow-retail-stage/month/YYYY-MM-DD/event.csv`
+
+* **Aggregated output**
+  `s3://airflow-retail-mart/aggregates/<metric>/dt=YYYY-MM-DD/...`
+
+---
+
+## 🔄 AWS Integration
+
+* Airflow connects to AWS via the `aws` connection.
+* CDK script under `aws_resources/` provisions:
+
+  * S3 buckets
+  * Glue Crawler
+* Crawler is triggered in the `retail_pipeline` DAG
+
+---
+
+## ✅ To-Do
+
+* [ ] Add tests and CI workflow
+* [ ] Add Athena queries over the parquet data
+* [ ] Add Great Expectations or Data Quality checks
+* [ ] Add Redshift Spectrum integration
+
+---
+
+## 🪪 License
+
+Licensed under the [MIT License](LICENSE).
