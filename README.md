@@ -4,6 +4,11 @@
 This project builds a robust end-to-end data pipeline for processing and analyzing e-commerce events. Built using modern Data Engineering best practices with Airflow assets, incremental processing, PostgreSQL, and AWS integration.
 
 ---
+## 🖼️ Architecture Diagram
+
+![Retail Pipeline Architecture](architecture/Airflow-Retail-ETL.drawio.png)
+
+---
 
 ## 📁 Folder Structure
 
@@ -57,12 +62,6 @@ This project builds a robust end-to-end data pipeline for processing and analyzi
   - Funnel conversion
 - Stores aggregates in Parquet under `s3://airflow-retail-mart/aggregates/...`
 - Triggers Glue Crawler to update the AWS Glue Data Catalog
-
----
-
-## 🖼️ Architecture Diagram
-
-![Retail Pipeline Architecture](architecture/Airflow-Retail-ETL.drawio.png)
 
 ---
 
