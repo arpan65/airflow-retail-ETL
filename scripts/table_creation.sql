@@ -1,6 +1,8 @@
-CREATE TABLE IF NOT EXISTS staging_events (
-    event_time TIMESTAMP,
-    event_type VARCHAR,
+-- ✅ STAGING TABLE
+DROP TABLE IF EXISTS staging_events;
+CREATE TABLE staging_events (
+    event_time TIMESTAMP NOT NULL,
+    event_type VARCHAR NOT NULL,
     product_id BIGINT,
     category_id BIGINT,
     category_code VARCHAR,
@@ -8,41 +10,49 @@ CREATE TABLE IF NOT EXISTS staging_events (
     price NUMERIC,
     user_id BIGINT,
     user_session VARCHAR,
-    event_date DATE,
-    loaded_at DATE
+    event_date DATE NOT NULL,
+    loaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS fact_events (
+-- ✅ FACT TABLE
+DROP TABLE IF EXISTS fact_events;
+CREATE TABLE fact_events (
     event_date DATE,
     event_type TEXT,
-    product_id BIGINT,
-    category_id BIGINT,
-    brand TEXT,
-    user_id BIGINT,
-    user_session TEXT,
+    product_id BIGINT,     -- FK to dim_product
+    user_id BIGINT,        -- FK to dim_user
     total_events INT,
     total_revenue FLOAT
 );
 
-CREATE TABLE IF NOT EXISTS dim_user (
+-- ✅ DIM USER
+DROP TABLE IF EXISTS dim_user;
+CREATE TABLE dim_user (
     user_id BIGINT PRIMARY KEY,
-    user_session TEXT
+    user_session TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS dim_product (
+-- ✅ DIM PRODUCT
+DROP TABLE IF EXISTS dim_product;
+CREATE TABLE dim_product (
     product_id BIGINT PRIMARY KEY,
     category_id BIGINT,
     category_code TEXT,
+    subcategory1 TEXT,
+    subcategory2 TEXT,
     brand TEXT,
-    price NUMERIC
+    price NUMERIC,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS dim_date (
+-- ✅ DIM DATE
+DROP TABLE IF EXISTS dim_date;
+CREATE TABLE dim_date (
     date DATE PRIMARY KEY,
-    day INT,
-    month INT,
-    year INT,
-    weekday INT,
-    week INT
+    day INT NOT NULL,
+    month INT NOT NULL,
+    year INT NOT NULL,
+    weekday INT NOT NULL,
+    week INT NOT NULL
 );
-

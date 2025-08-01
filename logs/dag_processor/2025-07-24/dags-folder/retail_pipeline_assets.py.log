@@ -238,3 +238,5 @@
 {"timestamp":"2025-07-24T20:35:01.168542","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-07-24T20:35:32.294913","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-07-24T20:36:03.383803","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-24T20:36:34.438715","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-24T20:37:05.369143","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/retail_pipeline_assets.py","logger":"airflow.models.dagbag.DagBag"}
