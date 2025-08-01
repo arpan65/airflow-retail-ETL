@@ -17,7 +17,7 @@ This project builds an end-to-end data pipeline to process and analyze e-commerc
 │   └── retail_pipeline.py          # Traditional DAG for mart aggregation and Glue catalog update
 ├── data/                   # (Optional) Raw CSVs or staging data
 ├── logs/                   # Airflow logs
-├── plugins/                # Custom Airflow plugins (if needed)
+├── plugins/                # Custom Airflow plugins
 ├── scripts/
 │   └── table_creation.sql  # SQL scripts to create staging, fact, and dimension tables
 ├── docker-compose.yaml     # Local Airflow deployment with Docker
