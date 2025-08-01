@@ -10,7 +10,7 @@ This project builds an end-to-end data pipeline to process and analyze e-commerc
 
 ```
 .
-├── aws/                    # AWS-related setup/configs (e.g., credentials, S3)
+├── aws_resources/          # AWS-related setup/configs (e.g., credentials, S3, Crawlers)
 ├── config/                 # Optional: Airflow or pipeline configurations
 ├── dags/
 │   ├── retail_pipeline_assets.py   # Asset-based DAG for raw to mart processing
