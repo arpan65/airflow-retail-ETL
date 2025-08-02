@@ -73,8 +73,8 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
-    AWS_ACCESS_KEY_ID: 'AKIA3Y7WJYICNYTBKLV3'
-    AWS_SECRET_ACCESS_KEY: 'DP9b6/G5pj7JVUMIdSx/lF+EjuA/PmPxMcqUMwhq'
+    AWS_ACCESS_KEY_ID: 'YOURKEY'
+    AWS_SECRET_ACCESS_KEY: 'YOURPASSWORD'
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
